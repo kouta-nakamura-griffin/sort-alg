@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
     var random = Math.floor(Math.random()*100);
     randoms.push(random);
     }
-    console.log(randoms);
+    //console.log(randoms);
     module.exports = randoms;
     res.render('top.ejs', {rans:randoms,sortList:sortList,sortNumber:sortNumber});
 });
