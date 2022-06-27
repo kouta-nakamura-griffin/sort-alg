@@ -1,0 +1,40 @@
+
+    <p> 
+
+        <%
+        console.log(rans);
+    rans.forEach((random)=>{
+    %>
+<input type="number" style="width: 50px;" value="<%=random %>" name="number">
+<%
+});
+%>
+
+<a href="/">更新</a></p>
+<form action="/sort" name="kj">
+<p><select name="sort" id="kj" value="js">
+    <%
+    console.log("紺"+sortList);
+    sortList.forEach((sort)=>{
+
+    %>
+    <option name="<%=sort.name%>" value="<%=sort.name%>"><%=sort.value%></option>
+    <%
+    });
+    %>  
+    <input type="submit" value="ソート" name="sortName">
+</select>
+
+</p>
+</form>
+<h3>結果</h3>
+<%
+if(sortNumber == null){
+
+}else{
+%>
+<%=sortNumber%>
+
+<%
+}
+%>
