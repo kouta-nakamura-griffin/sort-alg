@@ -28,10 +28,11 @@ app.get('/sort', (req, res)=>{
   var randoms = [];
   randoms = require('./app.js');
   var sortNumber = randoms;
-  console.log(randoms);
+  console.log(req.query.sort);
 //選択されたソートの種類によって場合分け
   switch (req.query.sort){
     case "bouble":
+      console.log("バブルソート");
       for(let i=0; i<sortNumber.length; i++){
         for(let j=sortNumber.length; j>=0; j--){
           if(sortNumber[j] < sortNumber[j-1]){
@@ -45,19 +46,22 @@ app.get('/sort', (req, res)=>{
     break;
 
     case "select":
+      console.log("選択法");
       for(let i=0; i<sortNumber.length; i++){
         for(let j=0; j<sortNumber.length; j++){
-          if(sortNumber[i] > sortNumber[j]){
+          if(sortNumber[i] < sortNumber[j]){
             const min = sortNumber[j];
+            sortNumber[j] = sortNumber[i];
             sortNumber[i] = min;
           }
         }
       }
     break;
 
-    case "insert":
+    case "Insert":
+      console.log("挿入法");
       for(let i=1; i<sortNumber.length; i++){
-        const temp = sortNumbers[i];
+        const temp = sortNumber[i];
         for(let j=i-1; j>=0; j--){
           if(sortNumber[j] > temp){
             sortNumber[j+1] = sortNumber[j];
